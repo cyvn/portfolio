@@ -3,699 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyvn</title>
+    <title>Minimal Islamic Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
-        .tab-content {
-            display: none;
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
         }
-        .nav-link:hover {
-            text-shadow: 0 0 8px rgba(99, 102, 241, 0.8);
-        }
-        .crypto-btn.active, .time-btn.active {
-            animation: pulse 2s infinite;
-        }
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-        }
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        @keyframes animate-gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .animate-gradient {
-            background-size: 200% 200%;
-            animation: animate-gradient 5s ease infinite;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .nav-link {
-            position: relative;
-        }
-        .nav-link.active::after {
-            content: '';
+        
+        #particles-js {
             position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 2px;
-            background-color: #6366f1;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
         }
-        canvas {
-            max-height: 400px;
+        
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-btn {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
         }
     </style>
 </head>
-<body class="bg-black font-sans text-gray-200 min-h-screen relative">
-    <!-- Particles Canvas -->
-    <canvas id="particles-bg" class="fixed inset-0 w-full h-full opacity-20 pointer-events-none"></canvas>
+<body class="text-white min-h-screen flex items-center justify-center">
+    <div id="particles-js"></div>
+    <div class="fixed inset-0 opacity-70" style="background: radial-gradient(circle at center, rgba(0,0,0,0) 0%, #000 100%);"></div>
 
-    <div class="container mx-auto px-4 py-8 max-w-6xl relative z-10">
+    <div class="content text-center px-6 py-12 max-w-3xl mx-auto">
+        <h1 class="text-5xl md:text-7xl font-light mb-4 tracking-wide">cyvn</h1>
+        <p class="text-xl md:text-2xl font-light mb-12 opacity-80">Developer & Islamic Student</p>
 
-        <!-- Header -->
-        <header class="flex flex-col items-center mb-12 text-center">
-            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-indigo-500/20 mb-4">
-                <img src="https://i.pinimg.com/736x/12/de/d9/12ded97eb0b6cd8babbe562652b44a4a.jpg" alt="Profile" class="w-full h-full object-cover">
-            </div>
-            <h1 class="text-4xl font-bold mb-2 text-white">cyvn</h1>
-            <p class="text-lg text-gray-400 mb-4">Full Stack Developer & Investor</p>
-            <div class="flex space-x-4">
-                <a href="https://x.com/21cyvn" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-400 transition-colors" title="Twitter">
-                    <i class="fab fa-twitter text-xl"></i>
-                </a>
-                <a href="https://t.me/cyleft" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-400 transition-colors" title="Telegram">
-                    <i class="fab fa-telegram text-xl"></i>
-                </a>
-                <a href="https://discord.com/users/826141670872711209" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-400 transition-colors" title="Discord">
-                    <i class="fab fa-discord text-xl"></i>
-                </a>
-                <a href="mailto:cyvnleft@gmail.com" class="text-gray-400 hover:text-indigo-400 transition-colors" title="Email">
-                    <i class="fas fa-envelope text-xl"></i>
-                </a>
-            </div>
-        </header>
-
-        <!-- Navigation Tabs -->
-        <nav class="flex justify-center mb-12 border-b border-gray-700">
-            <div class="flex space-x-8">
-                <button class="nav-link pb-2 px-1 font-medium text-gray-400 hover:text-indigo-400 transition-colors active" data-tab="career">
-                    <i class="fas fa-briefcase mr-2"></i>Career
-                </button>
-                <button class="nav-link pb-2 px-1 font-medium text-gray-600 hover:text-indigo-600 transition-colors" data-tab="skills">
-                    <i class="fas fa-cog mr-2"></i>Skills
-                </button>
-                <button class="nav-link pb-2 px-1 font-medium text-gray-600 hover:text-indigo-600 transition-colors" data-tab="projects">
-                    <i class="fas fa-project-diagram mr-2"></i>Projects
-                </button>
-                <button class="nav-link pb-2 px-1 font-medium text-gray-600 hover:text-indigo-600 transition-colors" data-tab="crypto">
-                    <i class="fas fa-chart-line mr-2"></i>Crypto Analytics
-                </button>
-            </div>
-        </nav>
-
-<!-- Tab Contents -->
-        <div class="tab-content active" id="career-tab">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-2xl font-bold mb-6 text-center">Experience</h2>
-                <div class="space-y-8">
-                    <div class="relative pl-8 border-l-2 border-indigo-900 pb-8">
-                        <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-indigo-500"></div>
-                        <div class="flex flex-col sm:flex-row justify-between mb-2">
-                            <h3 class="text-xl font-semibold text-white">Developer</h3>
-                            <span class="text-sm bg-indigo-900 text-indigo-200 px-2 py-1 rounded-full">2022 - Present</span>
-                        </div>
-                        <p class="text-gray-400 mb-2"></p>
-                        <p class="text-gray-300">Creating custom bots for Discord, websites, and other platforms to automate tasks, enhance user interaction, and streamline digital workflows.</p>
-                    </div>
-                    
-                    <div class="relative pl-8 border-l-2 border-indigo-900 pb-8">
-                        <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-indigo-500"></div>
-                        <div class="flex flex-col sm:flex-row justify-between mb-2">
-                            <h3 class="text-xl font-semibold text-white">Designer</h3>
-                            <span class="text-sm bg-indigo-900 text-indigo-200 px-2 py-1 rounded-full">2020 - Present</span>
-                        </div>
-                        <p class="text-gray-400 mb-2"></p>
-                        <p class="text-gray-300">Designing and developing tailored websites for diverse clients, blending aesthetics with functionality to enhance user experience and brand presence.</p>
-                    </div>
-                    
-                    <div class="relative pl-8 border-l-2 border-indigo-900">
-                        <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-indigo-500"></div>
-                        <div class="flex flex-col sm:flex-row justify-between mb-2">
-                            <h3 class="text-xl font-semibold text-white">IT Consultant</h3>
-                            <span class="text-sm bg-indigo-900 text-indigo-200 px-2 py-1 rounded-full">2019 - Present</span>
-                        </div>
-                        <p class="text-gray-400 mb-2">Digital Creations</p>
-                        <p class="text-gray-300">Providing expert IT consultancy to streamline systems, drive innovation, and deliver scalable, tech-forward solutions aligned with business goals.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tab-content" id="skills-tab">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-2xl font-bold mb-8 text-center">Technical Skills</h2>
-                <div class="flex flex-wrap justify-center gap-6">
-                    <div class="w-full sm:w-56 bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                        <div class="text-indigo-400 mb-3 text-4xl text-center">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="font-semibold text-center mb-2">C++</h3>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="w-full sm:w-56 bg-gray-900 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 skill-card border border-gray-800">
-                        <div class="text-indigo-600 mb-3 text-4xl text-center">
-                            <i class="fab fa-python"></i>
-                        </div>
-                        <h3 class="font-semibold text-center mb-2">Python</h3>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="w-full sm:w-56 bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 skill-card">
-                        <div class="text-indigo-400 mb-3 text-4xl text-center">
-                            <i class="fab fa-node-js"></i>
-                        </div>
-                        <h3 class="font-semibold text-center mb-2 text-white">Node.js</h3>
-                        <div class="w-full bg-gray-700 rounded-full h-2.5">
-                            <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="w-full sm:w-56 bg-gray-900 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 skill-card border border-gray-800">
-                        <div class="text-indigo-600 mb-3 text-4xl text-center">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3 class="font-semibold text-center mb-2 text-white">SQL/NoSQL</h3>
-                        <div class="w-full bg-gray-700 rounded-full h-2.5">
-                            <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="w-full sm:w-56 bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 skill-card">
-                        <div class="text-indigo-400 mb-3 text-4xl text-center">
-                            <i class="fab fa-btc"></i>
-                        </div>
-                        <h3 class="font-semibold text-center mb-2 text-white">Blockchain</h3>
-                        <div class="w-full bg-gray-700 rounded-full h-2.5">
-                            <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="w-full sm:w-56 bg-gray-900 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 skill-card border border-gray-800">
-                        <div class="text-indigo-600 mb-3 text-4xl text-center">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <h3 class="font-semibold text-center mb-2 text-white">AWS</h3>
-                        <div class="w-full bg-gray-700 rounded-full h-2.5">
-                            <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 65%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="flex justify-center space-x-6">
+            <!-- Telegram -->
+            <a href="https://t.me/cyleft" target="_blank" rel="noopener noreferrer" class="social-btn w-14 h-14 rounded-full flex items-center justify-center bg-black bg-opacity-20 backdrop-blur-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 2L10 13M21 2l-7 20-4-9-9-4 20-7z"/>
+                </svg>
+            </a>
+            <!-- GitHub -->
+            <a href="https://github.com/cyvn" target="_blank" rel="noopener noreferrer" class="social-btn w-14 h-14 rounded-full flex items-center justify-center bg-black bg-opacity-20 backdrop-blur-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+            </a>
         </div>
 
-        <div class="tab-content" id="projects-tab">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-2xl font-bold mb-8 text-center">Featured Projects</h2>
-                <div class="space-y-8">
-                    <div class="bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="md:flex">
-                            <div class="md:flex-shrink-0 md:w-48 bg-indigo-800 flex items-center justify-center">
-                                <i class="fas fa-link text-4xl text-white opacity-70"></i>
-                            </div>
-                            <div class="p-8">
-                                <div class="uppercase tracking-wide text-sm text-indigo-600 font-semibold">Moderation</div>
-                                <a href="https://guns.lol" target="_blank" class="block mt-1 text-lg leading-tight font-medium text-white hover:text-indigo-400">guns.lol <i class="fas fa-external-link-alt ml-1 text-xs"></i></a>
-                                <p class="mt-2 text-gray-400">guns.lol is a platform that offers users modern, customizable biolinks and secure file hosting. </p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 text-xs rounded-full bg-gray-700 text-indigo-300 border border-gray-600">biolinks</span>
-                                    <span class="px-2 py-1 text-xs rounded-full bg-gray-700 text-indigo-300 border border-gray-600">Domains</span>
-                                    <span class="px-2 py-1 text-xs rounded-full bg-gray-700 text-indigo-300 border border-gray-600">Links</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gray-900 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-800 hover:border-indigo-500">
-                        <div class="md:flex flex-row-reverse">
-                            <div class="md:flex-shrink-0 md:w-48 bg-blue-800 flex items-center justify-center">
-                                <i class="fas fa-chart-line text-4xl text-white opacity-30"></i>
-                            </div>
-                            <div class="p-8">
-                                <div class="uppercase tracking-wide text-sm text-blue-600 font-semibold">Website Creation</div>
-                                <a href="#" class="block mt-1 text-lg leading-tight font-medium text-white hover:text-blue-400">Websites for Schools</a>
-                                <p class="mt-2 text-gray-400">An interactive school website with dashboards for student performance, event tracking and real-time communication.</p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 text-xs rounded-full bg-gray-700 text-blue-300 border border-gray-600">React</span>
-                                    <span class="px-2 py-1 text-xs rounded-full bg-gray-700 text-blue-300 border border-gray-600">Node.js</span>
-                                    <span class="px-2 py-1 text-xs rounded-full bg-gray-700 text-blue-300 border border-gray-600">MongoDB</span>
-                                    <span class="px-2 py-1 text-xs rounded-full bg-gray-700 text-blue-300 border border-gray-600">Chart.js</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-                    
-
-        <div class="tab-content" id="crypto-tab">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-2xl font-bold mb-8 text-center">Crypto Market Analytics</h2>
-                
-                <div class="flex flex-wrap justify-center gap-4 mb-8">
-                    <button class="crypto-btn px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors active" data-coin="bitcoin">Bitcoin</button>
-                    <button class="crypto-btn px-4 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-gray-600 transition-colors" data-coin="ethereum">Ethereum</button>
-                </div>
-                
-                <div class="bg-gray-800 p-6 rounded-xl shadow-md mb-8">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-semibold">Live Price Chart</h3>
-                        <div class="flex space-x-2">
-                            <button class="time-btn px-3 py-1 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm active" data-time="7">7D</button>
-                            <button class="time-btn px-3 py-1 bg-gray-800 text-gray-200 rounded-lg hover:bg-gray-700 transition-colors text-sm" data-time="30">1M</button>
-                            <button class="time-btn px-3 py-1 bg-gray-800 text-gray-200 rounded-lg hover:bg-gray-700 transition-colors text-sm" data-time="90">3M</button>
-                            <button class="time-btn px-3 py-1 bg-gray-800 text-gray-200 rounded-lg hover:bg-gray-700 transition-colors text-sm" data-time="365">1Y</button>
-                        </div>
-                    </div>
-                    <canvas id="priceChart"></canvas>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-gray-900 p-6 rounded-xl shadow-md border border-gray-800">
-                        <div class="flex items-center mb-2">
-                            <span class="text-gray-700 mr-2">Current Price:</span>
-                            <span class="font-semibold" id="currentPrice">$0.00</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-gray-700 mr-2">24h Change:</span>
-                            <span class="font-semibold text-green-500" id="priceChange">0.00%</span>
-                        </div>
-                    </div>
-                    <div class="bg-gray-900 p-6 rounded-xl shadow-md border border-gray-800">
-                        <div class="flex items-center mb-2">
-                            <span class="text-gray-400 mr-2">Market Cap:</span>
-                            <span class="font-semibold text-white" id="marketCap">$0.00</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-gray-400 mr-2">Volume (24h):</span>
-                            <span class="font-semibold text-white" id="volume">$0.00</span>
-                        </div>
-                    </div>
-                    <div class="bg-gray-900 p-6 rounded-xl shadow-md border border-gray-800">
-                        <div class="flex items-center mb-2">
-                            <span class="text-gray-700 mr-2">All Time High:</span>
-                            <span class="font-semibold" id="ath">$0.00</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-gray-700 mr-2">From ATH:</span>
-                            <span class="font-semibold text-red-500" id="fromAth">0.00%</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-900 p-6 rounded-xl shadow-md border border-gray-800">
-                    <h3 class="text-xl font-semibold mb-4">Market Sentiment</h3>
-                    <div class="flex flex-col md:flex-row gap-6">
-                        <div class="flex-1">
-                            <h4 class="font-medium mb-2">Fear & Greed Index</h4>
-                            <div class="relative w-full bg-gray-700 rounded-full h-4">
-                                <div class="absolute top-0 left-0 bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 h-4 rounded-full" style="width: 50%"></div>
-                                <div class="absolute top-0 left-0 w-full h-4 rounded-full flex">
-                                    <div class="w-1/4 border-r border-white"></div>
-                                    <div class="w-1/4 border-r border-white"></div>
-                                    <div class="w-1/4 border-r border-white"></div>
-                                    <div class="w-1/4"></div>
-                                </div>
-                            </div>
-                            <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                <span>0</span>
-                                <span>25</span>
-                                <span>50</span>
-                                <span>75</span>
-                                <span>100</span>
-                            </div>
-                            <div class="text-center mt-2">
-                                <span class="text-gray-400" id="fearGreedValue">50</span> - <span id="fearGreedText" class="font-medium text-white">Neutral</span>
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="font-medium mb-2"></h4>
-                            <canvas id="dominanceChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="mt-20 opacity-60 text-sm">
+            <p>بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
         </div>
     </div>
 
-    <footer class="bg-gray-950/80 py-6 mt-16 border-t border-gray-800 backdrop-blur-sm">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex justify-center space-x-6 mb-3">
-                <a href="https://github.com/cyvn" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-400 transition-colors" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://x.com/21cyvn" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 transition-colors" title="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </div>
-            <p class="text-gray-400 text-xs">© 2025 cyvn</p>
-        </div>
-    </footer>
-
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Particles Background
-        const canvasBg = document.getElementById('particles-bg');
-        const ctxBg = canvasBg.getContext('2d');
-        canvasBg.width = window.innerWidth;
-        canvasBg.height = window.innerHeight;
-
-        let particles = [];
-        const particleCount = window.innerWidth < 768 ? 50 : 100;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvasBg.width;
-                this.y = Math.random() * canvasBg.height;
-                this.size = Math.random() * 4 + 1;
-                this.speedX = Math.random() * 2 - 1;
-                this.speedY = Math.random() * 2 - 1;
-                this.color = `rgba(99, 102, 241, ${Math.random() * 0.5 + 0.1})`;
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                
-                if (this.x < 0 || this.x > canvasBg.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvasBg.height) this.speedY *= -1;
-            }
-
-            draw() {
-                ctxBg.fillStyle = this.color;
-                ctxBg.beginPath();
-                ctxBg.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctxBg.fill();
-                ctxBg.closePath();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animateParticles() {
-            ctxBg.clearRect(0, 0, canvasBg.width, canvasBg.height);
-            
-            // Draw connecting lines between particles
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 150) {
-                        ctxBg.strokeStyle = `rgba(99, 102, 241, ${1 - distance/150})`;
-                        ctxBg.lineWidth = 0.5;
-                        ctxBg.beginPath();
-                        ctxBg.moveTo(particles[i].x, particles[i].y);
-                        ctxBg.lineTo(particles[j].x, particles[j].y);
-                        ctxBg.stroke();
-                    }
-                }
-            }
-            
-            // Update and draw particles
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-            
-            requestAnimationFrame(animateParticles);
-        }
-
-        initParticles();
-        animateParticles();
-
-        // Handle resize
-        window.addEventListener('resize', () => {
-            canvasBg.width = window.innerWidth;
-            canvasBg.height = window.innerHeight;
-            initParticles();
-        });
-
-        // Tab Switching
-        const navLinks = document.querySelectorAll('.nav-link');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                const tabName = link.getAttribute('data-tab');
-                
-                // Update active nav link
-                navLinks.forEach(navLink => navLink.classList.remove('active'));
-                link.classList.add('active');
-                
-                // Show corresponding tab content
-                tabContents.forEach(content => content.classList.remove('active'));
-                document.getElementById(`${tabName}-tab`).classList.add('active');
-            });
-        });
-
-        // Crypto Chart Functionality
-        let priceChart;
-        const cryptoBtns = document.querySelectorAll('.crypto-btn');
-        const timeBtns = document.querySelectorAll('.time-btn');
-        
-        async function fetchCoinData(coinId = 'bitcoin', days = 7) {
-            try {
-                const response = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${days}`);
-                const data = await response.json();
-                return data;
-            } catch (error) {
-                console.error('Error fetching coin data:', error);
-            }
-        }
-        
-        async function updateChart(coinId = 'bitcoin', days = 7) {
-            const data = await fetchCoinData(coinId, days);
-            if (!data) return;
-            
-            const prices = data.prices;
-            const labels = prices.map(price => {
-                const date = new Date(price[0]);
-                return days <= 30 ? date.toLocaleDateString() : date.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
-            });
-            
-            const chartData = prices.map(price => price[1]);
-            
-            if (priceChart) {
-                priceChart.data.labels = labels;
-                priceChart.data.datasets[0].data = chartData;
-                priceChart.update();
-            } else {
-                const ctx = document.getElementById('priceChart').getContext('2d');
-                priceChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Price (USD)',
-                            data: chartData,
-                            borderColor: '#6366f1',
-                            backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                            borderWidth: 1,
-                            pointRadius: 2,
-                            pointHoverRadius: 3,
-                            tension: 0.1,
-                            fill: true
-                        }]
+        document.addEventListener('DOMContentLoaded', function () {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 200,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
                     },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                grid: {
-                                    color: 'rgba(255, 255, 255, 0.1)'
-                                },
-                                ticks: {
-                                    color: 'rgba(255, 255, 255, 0.7)'
-                                }
-                            },
-                            x: {
-                                grid: {
-                                    color: 'rgba(255, 255, 255, 0.1)'
-                                },
-                                ticks: {
-                                    color: 'rgba(255, 255, 255, 0.7)'
-                                }
-                            }
+                    "color": {
+                        "value": "#ffffff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": true,
+                        "anim": {
+                            "enable": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": false
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 0.5,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false
                         }
                     }
-                });
-            }
-            
-            // Update coin stats
-            const stats = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`).then(res => res.json());
-            document.getElementById('currentPrice').textContent = `${stats.market_data.current_price.usd.toLocaleString()}`;
-            const change24h = stats.market_data.price_change_percentage_24h;
-            document.getElementById('priceChange').textContent = `${change24h.toFixed(2)}%`;
-            document.getElementById('priceChange').className = `font-semibold ${change24h >= 0 ? 'text-green-500' : 'text-red-500'}`;
-            document.getElementById('marketCap').textContent = `${stats.market_data.market_cap.usd.toLocaleString()}`;
-            document.getElementById('volume').textContent = `${stats.market_data.total_volume.usd.toLocaleString()}`;
-            document.getElementById('ath').textContent = `${stats.market_data.ath.usd.toLocaleString()}`;
-            const fromAth = ((stats.market_data.current_price.usd - stats.market_data.ath.usd) / stats.market_data.ath.usd * 100).toFixed(2);
-            document.getElementById('fromAth').textContent = `${fromAth}%`;
-            document.getElementById('fromAth').className = `font-semibold ${fromAth >= 0 ? 'text-green-500' : 'text-red-500'}`;
-        }
-        
-        cryptoBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                cryptoBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const days = document.querySelector('.time-btn.active').getAttribute('data-time');
-                updateChart(btn.getAttribute('data-coin'), days);
-            });
-        });
-        
-        timeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                timeBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const coin = document.querySelector('.crypto-btn.active').getAttribute('data-coin');
-                setupChartRefresh(coin, btn.getAttribute('data-time'));
-            });
-        });
-        
-        // Initialize with Bitcoin 7D data
-        document.addEventListener('DOMContentLoaded', () => {
-            setupChartRefresh('bitcoin', '7');
-            connectLivePrice();
-            
-            // Also refresh when tab becomes visible again
-            document.addEventListener('visibilitychange', () => {
-                if (!document.hidden) {
-                    const coin = document.querySelector('.crypto-btn.active').getAttribute('data-coin');
-                    const days = document.querySelector('.time-btn.active').getAttribute('data-time');
-                    setupChartRefresh(coin, days);
-                    connectLivePrice();
-                }
-            });
-        });
-
-        // Live price updates and chart refresh
-        let livePriceSocket;
-        let currentCoin = 'bitcoin';
-        let chartRefreshInterval;
-        const REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes in ms
-
-        function connectLivePrice() {
-            if (livePriceSocket) {
-                livePriceSocket.close();
-            }
-            
-            // Map our coin IDs to CoinCap's asset names
-            const coinCapAssets = {
-                'bitcoin': 'bitcoin',
-                'ethereum': 'ethereum'
-            };
-            
-            const assetName = coinCapAssets[currentCoin] || 'bitcoin';
-            livePriceSocket = new WebSocket(`wss://ws.coincap.io/prices?assets=${assetName}`);
-            
-            livePriceSocket.onmessage = function (msg) {
-                try {
-                    const data = JSON.parse(msg.data);
-                    const price = data[assetName];
-                    if (price) {
-                        const formattedPrice = parseFloat(price).toLocaleString(undefined, {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 6
-                        });
-                        document.getElementById('currentPrice').textContent = `${formattedPrice}`;
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "repulse"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "repulse": {
+                            "distance": 100,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
                     }
-                } catch (error) {
-                    console.error('Error processing WebSocket message:', error);
-                }
-            };
-            
-            livePriceSocket.onerror = function(error) {
-                console.error('WebSocket error:', error);
-                // Attempt to reconnect after a delay
-                setTimeout(connectLivePrice, 5000);
-            };
-            
-            livePriceSocket.onclose = function() {
-                // Reconnect if the connection closes unexpectedly
-                setTimeout(connectLivePrice, 5000);
-            };
-        }
-
-        function setupChartRefresh(coinId, days) {
-            // Clear any existing interval
-            if (chartRefreshInterval) {
-                clearInterval(chartRefreshInterval);
-            }
-            
-            // Initial update
-            updateChart(coinId, days);
-            
-            // Set up periodic refresh
-            chartRefreshInterval = setInterval(async () => {
-                try {
-                    const data = await fetchCoinData(coinId, days);
-                    if (!data) return;
-                    
-                    const prices = data.prices;
-                    const labels = prices.map(price => {
-                        const date = new Date(price[0]);
-                        return days <= 30 ? date.toLocaleDateString() : date.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
-                    });
-                    
-                    const chartData = prices.map(price => price[1]);
-                    
-                    if (priceChart) {
-                        priceChart.data.labels = labels;
-                        priceChart.data.datasets[0].data = chartData;
-                        priceChart.update();
-                    }
-                    
-                    // Also update stats on each refresh
-                    const stats = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`).then(res => res.json());
-                    document.getElementById('currentPrice').textContent = `${stats.market_data.current_price.usd.toLocaleString()}`;
-                    const change24h = stats.market_data.price_change_percentage_24h;
-                    document.getElementById('priceChange').textContent = `${change24h.toFixed(2)}%`;
-                    document.getElementById('priceChange').className = `font-semibold ${change24h >= 0 ? 'text-green-500' : 'text-red-500'}`;
-                    document.getElementById('marketCap').textContent = `${stats.market_data.market_cap.usd.toLocaleString()}`;
-                    document.getElementById('volume').textContent = `${stats.market_data.total_volume.usd.toLocaleString()}`;
-                    
-                } catch (error) {
-                    console.error('Error refreshing chart:', error);
-                }
-            }, REFRESH_INTERVAL);
-        }
-        
-        cryptoBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                cryptoBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const days = document.querySelector('.time-btn.active').getAttribute('data-time');
-                currentCoin = btn.getAttribute('data-coin');
-                setupChartRefresh(currentCoin, days);
-                connectLivePrice();
+                },
+                "retina_detect": true
             });
         });
-        
-        // Initial connection
-        connectLivePrice();
     </script>
 </body>
 </html>
