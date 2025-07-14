@@ -1,161 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cyvn</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>cyvn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      overflow: hidden;
+      height: 100vh;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: 0.07em;
+    }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
-            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-        }
-        
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-        
-        .content {
-            position: relative;
-            z-index: 1;
-        }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
 
-        .social-btn {
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
+    .content {
+      position: relative;
+      z-index: 1;
+    }
 
-        .social-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
-        }
-    </style>
+    .social-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      margin: 0 8px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background-color: transparent;
+      color: #fff;
+    }
+
+    .social-circle:hover {
+      transform: scale(1.2);
+      background-color: #fff;
+      color: #000;
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(0, 0, 0, 0.3);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 1rem 0;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .font-arabic {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .divider {
+      width: 80%;
+      max-width: 300px;
+      height: 1px;
+      background: rgba(255,255,255,0.3);
+      margin: 2rem auto;
+    }
+
+    .pattern-divider {
+      width: 100%;
+      height: 60px;
+      position: relative;
+      margin: 2rem 0;
+      overflow: hidden;
+    }
+
+    .pattern-divider svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: slide 30s linear infinite;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
 </head>
-<body class="text-white min-h-screen flex items-center justify-center">
-    <div id="particles-js"></div>
-    <div class="fixed inset-0 opacity-70" style="background: radial-gradient(circle at center, rgba(0,0,0,0) 0%, #000 100%);"></div>
+<body>
+  <!-- Click to Enter Overlay -->
+  <div id="enter-overlay" class="fixed inset-0 bg-black z-50 flex items-center justify-center cursor-pointer transition-opacity duration-1000">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold mb-4"></h1>
+      <p class="text-xl opacity-80">Click to enter</p>
+    </div>
+  </div>
 
-    <div class="content text-center px-6 py-12 max-w-3xl mx-auto">
-        <h1 class="text-5xl md:text-7xl font-light mb-4 tracking-wide">cyvn</h1>
-        <p class="text-xl md:text-2xl font-light mb-12 opacity-80">Developer & Islamic Student</p>
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
 
-        <div class="flex justify-center space-x-6">
-            <!-- Telegram -->
-            <a href="https://t.me/cyleft" target="_blank" rel="noopener noreferrer" class="social-btn w-14 h-14 rounded-full flex items-center justify-center bg-black bg-opacity-20 backdrop-blur-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 2L10 13M21 2l-7 20-4-9-9-4 20-7z"/>
-                </svg>
-            </a>
-            <!-- GitHub -->
-            <a href="https://github.com/cyvn" target="_blank" rel="noopener noreferrer" class="social-btn w-14 h-14 rounded-full flex items-center justify-center bg-black bg-opacity-20 backdrop-blur-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                </svg>
-            </a>
-        </div>
-
-        <div class="mt-20 opacity-60 text-sm">
-            <p>بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
-        </div>
+  <!-- Main Content -->
+  <div class="content flex flex-col items-center justify-start h-screen pt-32 px-4 text-center">
+    <img src="https://i.pinimg.com/736x/a9/8c/59/a98c5971a85f1a88d9e8626fcb5e8582.jpg" 
+         alt="Profile" 
+         class="profile-img mb-6">
+    <h1 class="text-4xl font-bold mb-8">cy</h1>
+    <div class="flex mb-4">
+      <a href="https://t.me/cyleft" class="social-circle"><i class="fab fa-telegram"></i></a>
+      <a href="https://discord.com/users/826141670872711209" class="social-circle"><i class="fab fa-discord"></i></a>
+      <a href="https://github.com/cyvn" class="social-circle"><i class="fab fa-github"></i></a>
+      <a href="mailto:cyvnleft@gmail.com" class="social-circle"><i class="fas fa-envelope"></i></a>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            particlesJS('particles-js', {
-                "particles": {
-                    "number": {
-                        "value": 200,
-                        "density": {
-                            "enable": true,
-                            "value_area": 800
-                        }
-                    },
-                    "color": {
-                        "value": "#ffffff"
-                    },
-                    "shape": {
-                        "type": "circle",
-                        "stroke": {
-                            "width": 0,
-                            "color": "#000000"
-                        }
-                    },
-                    "opacity": {
-                        "value": 0.5,
-                        "random": true,
-                        "anim": {
-                            "enable": false
-                        }
-                    },
-                    "size": {
-                        "value": 3,
-                        "random": true,
-                        "anim": {
-                            "enable": false
-                        }
-                    },
-                    "line_linked": {
-                        "enable": false
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": 0.5,
-                        "direction": "none",
-                        "random": true,
-                        "straight": false,
-                        "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": false
-                        }
-                    }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": true,
-                            "mode": "repulse"
-                        },
-                        "onclick": {
-                            "enable": true,
-                            "mode": "push"
-                        },
-                        "resize": true
-                    },
-                    "modes": {
-                        "repulse": {
-                            "distance": 100,
-                            "duration": 0.4
-                        },
-                        "push": {
-                            "particles_nb": 4
-                        }
-                    }
-                },
-                "retina_detect": true
-            });
-        });
-    </script>
+    <!-- About Me Box -->
+    <div class="w-full max-w-md mt-12">
+      <div class="border-t border-b border-white border-opacity-10 py-8">
+        <p class="text-white text-opacity-80 text-sm tracking-widest uppercase mb-3">About</p>
+        <p class="text-white text-opacity-90 text-base leading-relaxed tracking-tight">
+          6+ years in web & game development<br>
+          2+ years in religious studies
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p class="text-gray-400 text-sm mt-1">2025 © cyvn | All rights reserved.</p>
+    <!-- Hidden Background Audio -->
+    <audio id="bgAudio" loop hidden>
+      <source src="https://r2.guns.lol/d7d3eb7c-40cb-43ae-b2e7-8a321bf9270e.mp3" type="audio/mpeg">
+    </audio>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById('enter-overlay').addEventListener('click', function () {
+      this.style.opacity = '0';
+      setTimeout(() => {
+        this.style.display = 'none';
+      }, 1000);
+
+      const audio = document.getElementById("bgAudio");
+      audio.volume = 0;
+      audio.currentTime = 0;
+      audio.play().then(() => {
+        let vol = 0;
+        const fadeInterval = setInterval(() => {
+          if (vol < 1) {
+            vol += 0.02;
+            audio.volume = Math.min(vol, 1);
+          } else {
+            clearInterval(fadeInterval);
+          }
+        }, 100);
+      }).catch(err => {
+        console.warn("Autoplay may have failed:", err);
+      });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffffff" },
+        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3, random: true },
+        move: { enable: true, speed: 2, out_mode: "out" }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 1 } },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>
