@@ -1,203 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>cyvn</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      overflow: hidden;
-      height: 100vh;
-      background-color: #000;
-      color: #fff;
-      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-      letter-spacing: 0.07em;
-      cursor: url('https://r2.guns.lol/27b8cee7-27b3-4b73-904d-1285cfe71d4f.webp') 16 16, auto;
-    }
-
-    * {
-      cursor: url('https://r2.guns.lol/27b8cee7-27b3-4b73-904d-1285cfe71d4f.webp') 16 16, auto !important;
-    }
-
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .social-circle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      margin: 0 8px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      background-color: transparent;
-      color: #fff;
-    }
-
-    .social-circle:hover {
-      transform: scale(1.2);
-      background-color: #fff;
-      color: #000;
-    }
-
-    .profile-img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(0, 0, 0, 0.3);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .profile-img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
-    }
-
-    .font-arabic {
-      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    .divider {
-      width: 80%;
-      max-width: 300px;
-      height: 1px;
-      background: rgba(255,255,255,0.3);
-      margin: 2rem auto;
-    }
-
-    .pattern-divider {
-      width: 100%;
-      height: 60px;
-      position: relative;
-      margin: 2rem 0;
-      overflow: hidden;
-    }
-
-    .pattern-divider svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      animation: slide 30s linear infinite;
-    }
-
-    @keyframes slide {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-  </style>
-</head>
-<body>
-  <div id="enter-overlay" class="fixed inset-0 bg-black z-50 flex items-center justify-center cursor-pointer transition-opacity duration-1000">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold mb-4"></h1>
-      <p class="text-xl opacity-80">Click to enter</p>
-    </div>
-  </div>
-
-  <div id="particles-js"></div>
-
-  <div class="content flex flex-col items-center justify-start h-screen pt-32 px-4 text-center">
-    <img src="https://i.pinimg.com/736x/a9/8c/59/a98c5971a85f1a88d9e8626fcb5e8582.jpg" 
-         alt="Profile" 
-         class="profile-img mb-6">
-    <h1 class="text-4xl font-bold mb-8">cy</h1>
-    <div class="flex mb-4">
-      <a href="https://t.me/cyleft" class="social-circle"><i class="fab fa-telegram"></i></a>
-      <a href="https://discord.com/users/826141670872711209" class="social-circle"><i class="fab fa-discord"></i></a>
-      <a href="https://github.com/cyvn" class="social-circle"><i class="fab fa-github"></i></a>
-      <a href="mailto:cyvnleft@gmail.com" class="social-circle"><i class="fas fa-envelope"></i></a>
-    </div>
-
-    <div class="w-full max-w-md mt-12">
-      <div class="border-t border-b border-white border-opacity-10 py-8">
-        <p class="text-white text-opacity-80 text-sm tracking-widest uppercase mb-3">About</p>
-        <p class="text-white text-opacity-90 text-base leading-relaxed tracking-tight">
-          6+ years in web & game development<br>
-          2+ years in religious studies<br>
-          والى ربك فارغب
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <footer class="text-center">
-    <p class="text-gray-400 text-sm mt-1">2025 © cyvn | All rights reserved.</p>
-    <audio id="bgAudio" loop hidden>
-      <source src="https://r2.guns.lol/d7d3eb7c-40cb-43ae-b2e7-8a321bf9270e.mp3" type="audio/mpeg">
-    </audio>
-  </footer>
-
-  <script>
-    document.getElementById('enter-overlay').addEventListener('click', function () {
-      this.style.opacity = '0';
-      setTimeout(() => {
-        this.style.display = 'none';
-      }, 1000);
-
-      const audio = document.getElementById("bgAudio");
-      audio.volume = 0;
-      audio.currentTime = 0;
-      audio.play().then(() => {
-        let vol = 0;
-        const fadeInterval = setInterval(() => {
-          if (vol < 1) {
-            vol += 0.02;
-            audio.volume = Math.min(vol, 1);
-          } else {
-            clearInterval(fadeInterval);
-          }
-        }, 100);
-      }).catch(err => {
-        console.warn("Autoplay may have failed:", err);
-      });
-    });
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#ffffff" },
-        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
-        shape: { type: "circle" },
-        opacity: { value: 0.5 },
-        size: { value: 3, random: true },
-        move: { enable: true, speed: 0.8, out_mode: "out" }
-      },
-      interactivity: {
-        events: {
-          onhover: { enable: true, mode: "grab" },
-          onclick: { enable: true, mode: "push" },
-          resize: true
-        },
-        modes: {
-          grab: { distance: 140, line_linked: { opacity: 1 } },
-          push: { particles_nb: 4 }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYVN - Minimal Dark Interface</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Playfair+Display:wght@400;500&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            overflow-x: hidden;
         }
-      },
-      retina_detect: true
-    });
-  </script>
+        
+        .content-box {
+            transition: all 0.3s ease;
+            background: rgba(30, 30, 30, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .content-box:hover {
+            transform: translateY(-5px);
+            background: rgba(40, 40, 40, 0.6);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #e0e0e0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative">
+    <canvas id="particles" class="absolute top-0 left-0 w-full h-full -z-10"></canvas>
+
+    <header class="w-full py-8 px-8 md:px-16 flex justify-between items-center">
+        <div class="w-10 h-10 rounded-full overflow-hidden border border-opacity-20 border-white">
+            <img src="https://i.pinimg.com/736x/cb/a3/09/cba309eadae7a619cc50f8b311e228b8.jpg" 
+                 alt="Profile" 
+                 class="w-full h-full object-cover">
+        </div>
+        <nav class="hidden md:flex space-x-8">
+            <a href="projects.html" class="nav-link text-sm font-light tracking-wider uppercase">Projects</a>
+            <a href="about.html" class="nav-link text-sm font-light tracking-wider uppercase">About</a>
+            <a href="contact.html" class="nav-link text-sm font-light tracking-wider uppercase">Contact</a>
+        </nav>
+        <button class="md:hidden text-xl">☰</button>
+    </header>
+
+
+    <main class="flex-grow flex flex-col items-center justify-start px-6 pt-12 md:pt-20 relative">
+
+        <div class="w-full max-w-5xl mx-auto px-8 py-16 md:py-20 rounded-lg relative">
+
+            <div class="relative text-center mb-12">
+                <h1 class="text-8xl md:text-[10rem] font-thin tracking-[0.5em] uppercase text-gray-700 opacity-30 absolute inset-0 flex items-center justify-center -z-10">CYVN</h1>
+                <div class="relative z-10 pt-16 md:pt-24">
+                    <h2 class="font-serif text-3xl md:text-4xl opacity-90 tracking-wider">Website Developer & Designer</h2>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 50;
+        const colors = ['rgba(224, 224, 224, 0.1)', 'rgba(224, 224, 224, 0.15)', 'rgba(224, 224, 224, 0.2)'];
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1 + 0.5;
+                this.speedX = (Math.random() * 0.5 - 0.25) * 0.5;
+                this.speedY = (Math.random() * 0.5 - 0.25) * 0.5;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        document.querySelector('button').addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            if (nav.classList.contains('hidden')) {
+                nav.classList.remove('hidden');
+                nav.classList.add('flex', 'flex-col', 'absolute', 'top-16', 'right-6', 'bg-black', 'p-4', 'space-y-4', 'space-x-0', 'z-50');
+            } else {
+                nav.classList.add('hidden');
+                nav.classList.remove('flex', 'flex-col', 'absolute', 'top-16', 'right-6', 'bg-black', 'p-4', 'space-y-4', 'space-x-0', 'z-50');
+            }
+        });
+
+    </script>
 </body>
 </html>
