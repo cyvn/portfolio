@@ -1,202 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>cyvn</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      overflow: hidden;
-      height: 100vh;
-      background-color: #000;
-      color: #fff;
-      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-      letter-spacing: 0.07em;
-      cursor: url('https://r2.guns.lol/27b8cee7-27b3-4b73-904d-1285cfe71d4f.webp') 16 16, auto;
-    }
-
-    * {
-      cursor: url('https://r2.guns.lol/27b8cee7-27b3-4b73-904d-1285cfe71d4f.webp') 16 16, auto !important;
-    }
-
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .social-circle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      margin: 0 8px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      background-color: transparent;
-      color: #fff;
-    }
-
-    .social-circle:hover {
-      transform: scale(1.2);
-      background-color: #fff;
-      color: #000;
-    }
-
-    .profile-img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(0, 0, 0, 0.3);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .profile-img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
-    }
-
-    .font-arabic {
-      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    .divider {
-      width: 80%;
-      max-width: 300px;
-      height: 1px;
-      background: rgba(255,255,255,0.3);
-      margin: 2rem auto;
-    }
-
-    .pattern-divider {
-      width: 100%;
-      height: 60px;
-      position: relative;
-      margin: 2rem 0;
-      overflow: hidden;
-    }
-
-    .pattern-divider svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      animation: slide 30s linear infinite;
-    }
-
-    @keyframes slide {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-  </style>
-</head>
-<body>
-  <div id="enter-overlay" class="fixed inset-0 bg-black z-50 flex items-center justify-center cursor-pointer transition-opacity duration-1000">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold mb-4"></h1>
-      <p class="text-xl opacity-80">Click to enter</p>
-    </div>
-  </div>
-
-  <div id="particles-js"></div>
-
-  <div class="content flex flex-col items-center justify-start h-screen pt-32 px-4 text-center">
-    <img src="https://i.pinimg.com/736x/a9/8c/59/a98c5971a85f1a88d9e8626fcb5e8582.jpg" 
-         alt="Profile" 
-         class="profile-img mb-6">
-    <h1 class="text-4xl font-bold mb-8">cy</h1>
-    <div class="flex mb-4">
-      <a href="https://t.me/cyleft" class="social-circle"><i class="fab fa-telegram"></i></a>
-      <a href="https://discord.com/users/826141670872711209" class="social-circle"><i class="fab fa-discord"></i></a>
-      <a href="https://github.com/cyvn" class="social-circle"><i class="fab fa-github"></i></a>
-      <a href="mailto:cyvnleft@gmail.com" class="social-circle"><i class="fas fa-envelope"></i></a>
-    </div>
-
-    <div class="w-full max-w-md mt-12">
-      <div class="border-t border-b border-white border-opacity-10 py-8">
-        <p class="text-white text-opacity-80 text-sm tracking-widest uppercase mb-3">About</p>
-        <p class="text-white text-opacity-90 text-base leading-relaxed tracking-tight">
-          6+ years in web & game development<br>
-          2+ years in religious studies
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <footer class="text-center">
-    <p class="text-gray-400 text-sm mt-1">2025 © cyvn | All rights reserved.</p>
-    <audio id="bgAudio" loop hidden>
-      <source src="https://r2.guns.lol/d7d3eb7c-40cb-43ae-b2e7-8a321bf9270e.mp3" type="audio/mpeg">
-    </audio>
-  </footer>
-
-  <script>
-    document.getElementById('enter-overlay').addEventListener('click', function () {
-      this.style.opacity = '0';
-      setTimeout(() => {
-        this.style.display = 'none';
-      }, 1000);
-
-      const audio = document.getElementById("bgAudio");
-      audio.volume = 0;
-      audio.currentTime = 0;
-      audio.play().then(() => {
-        let vol = 0;
-        const fadeInterval = setInterval(() => {
-          if (vol < 1) {
-            vol += 0.02;
-            audio.volume = Math.min(vol, 1);
-          } else {
-            clearInterval(fadeInterval);
-          }
-        }, 100);
-      }).catch(err => {
-        console.warn("Autoplay may have failed:", err);
-      });
-    });
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#ffffff" },
-        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
-        shape: { type: "circle" },
-        opacity: { value: 0.5 },
-        size: { value: 3, random: true },
-        move: { enable: true, speed: 0.8, out_mode: "out" }
-      },
-      interactivity: {
-        events: {
-          onhover: { enable: true, mode: "grab" },
-          onclick: { enable: true, mode: "push" },
-          resize: true
-        },
-        modes: {
-          grab: { distance: 140, line_linked: { opacity: 1 } },
-          push: { particles_nb: 4 }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cyvn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f7f5;
+            color: #675749;
         }
-      },
-      retina_detect: true
-    });
-  </script>
+        .name {
+            font-family: 'Playfair Display', serif;
+        }
+        .profile-img {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        .social-icon {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        .islamic-pattern {
+            opacity: 0.03;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full text-center relative">
+        <!-- Delicate Islamic geometric pattern -->
+        <div class="islamic-pattern absolute inset-0 overflow-hidden -z-10">
+            <svg viewBox="0 0 500 500" class="w-full h-full">
+                <path fill="none" stroke="#3a3a3a" stroke-width="1" 
+                      d="M100,250a150,150 0 1,0 300,0a150,150 0 1,0 -300,0
+                         M250,100a150,150 0 0,0 0,300a150,150 0 0,0 0,-300
+                         M175,175l150,150M175,325l150,-150" />
+            </svg>
+        </div>
+
+        <!-- Profile Image -->
+        <div class="mb-8 flex justify-center">
+            <div class="profile-img w-32 h-32 rounded-full bg-cover bg-center overflow-hidden" 
+                 style="background-image: url('https://i.pinimg.com/736x/bf/c0/a4/bfc0a41a23dfc49bee832b9d5c5af4b3.jpg')"></div>
+        </div>
+
+        <!-- Name and Bio -->
+        <h1 class="name text-3xl font-medium mb-2 text-[#675749]">cyvn</h1>
+        <p class="text-[#675749] mb-8 font-light max-w-xs mx-auto">
+            Developer & spiritual seeker.
+        </p>
+
+        <!-- Links -->
+        <div class="space-y-3 mb-10">
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex justify-center space-x-4">
+            <a href="https://discord.com" target="_blank" class="social-icon w-10 h-10 rounded-full flex items-center justify-center text-[#675749]">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://telegram.org" target="_blank" class="social-icon w-10 h-10 rounded-full flex items-center justify-center text-[#675749]">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="mailto:example@email.com" class="social-icon w-10 h-10 rounded-full flex items-center justify-center text-[#675749]">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+
+        <!-- Subtle Islamic calligraphy touch -->
+        <div class="mt-12 text-xs text-[#675749] font-light tracking-widest">
+            بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+        </div>
+    </div>
 </body>
 </html>
