@@ -1,84 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cyvn</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cyvn</title>
 
-    <link rel="icon" type="image/png" href="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/grok.png">
+  <link rel="icon" type="image/png" href="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/grok.png">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9f7f5;
-            color: #675749;
-        }
-        .name {
-            font-family: 'Playfair Display', serif;
-        }
-        .profile-img {
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-        .social-icon {
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            background-color: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .social-icon:hover {
-            transform: translateY(-3px);
-            background-color: rgba(255, 255, 255, 0.4);
-        }
-        .islamic-pattern {
-            opacity: 0.03;
-            pointer-events: none;
-        }
-    </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f7f5;
+      color: #675749;
+    }
+    .name {
+      font-family: 'Playfair Display', serif;
+    }
+    .profile-img {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    .social-icon {
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .social-icon:hover {
+      transform: translateY(-3px);
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+    .islamic-pattern {
+      opacity: 0.03;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
-    <div class="max-w-md w-full text-center relative">
-        <div class="islamic-pattern absolute inset-0 overflow-hidden -z-10">
-            <svg viewBox="0 0 500 500" class="w-full h-full">
-                <path fill="none" stroke="#3a3a3a" stroke-width="1" 
-                      d="M100,250a150,150 0 1,0 300,0a150,150 0 1,0 -300,0
-                         M250,100a150,150 0 0,0 0,300a150,150 0 0,0 0,-300
-                         M175,175l150,150M175,325l150,-150" />
-            </svg>
-        </div>
-
-        <div class="mb-8 flex justify-center">
-            <div class="profile-img w-32 h-32 rounded-full bg-cover bg-center overflow-hidden" 
-                 style="background-image: url('https://i.pinimg.com/736x/bf/c0/a4/bfc0a41a23dfc49bee832b9d5c5af4b3.jpg')"></div>
-        </div>
-
-        <h1 class="name text-3xl font-medium mb-2 text-[#675749]">cyvn</h1>
-        <p class="text-[#675749] mb-8 font-light max-w-xs mx-auto">
-            Developer & spiritual seeker.
-        </p>
-
-        <div class="space-y-3 mb-10">
-        </div>
-
-        <div class="flex justify-center space-x-4">
-            <a href="https://discord.com/users/826141670872711209" target="_blank" class="social-icon w-10 h-10 rounded-full flex items-center justify-center text-[#675749]">
-                <i class="fab fa-discord"></i>
-            </a>
-            <a href="https://t.me/cyleft" target="_blank" class="social-icon w-10 h-10 rounded-full flex items-center justify-center text-[#675749]">
-                <i class="fab fa-telegram"></i>
-            </a>
-            <a href="mailto:cyvnleft@gmail.com" class="social-icon w-10 h-10 rounded-full flex items-center justify-center text-[#675749]">
-                <i class="fas fa-envelope"></i>
-            </a>
-        </div>
-
-        <!-- Subtle Islamic calligraphy touch -->
-        <div class="mt-12 text-xs text-[#675749] font-light tracking-widest">
-            بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-        </div>
+  <div class="max-w-md w-full text-center relative">
+    <div class="islamic-pattern absolute inset-0 overflow-hidden -z-10">
+      <svg viewBox="0 0 500 500" class="w-full h-full">
+        <path fill="none" stroke="#3a3a3a" stroke-width="1" 
+              d="M100,250a150,150 0 1,0 300,0a150,150 0 1,0 -300,0
+                 M250,100a150,150 0 0,0 0,300a150,150 0 0,0 0,-300
+                 M175,175l150,150M175,325l150,-150" />
+      </svg>
     </div>
+
+    <div class="mb-8 flex justify-center">
+      <div class="profile-img w-32 h-32 rounded-full bg-cover bg-center overflow-hidden" 
+           style="background-image: url('https://i.pinimg.com/736x/bf/c0/a4/bfc0a41a23dfc49bee832b9d5c5af4b3.jpg')"></div>
+    </div>
+
+    <h1 class="name text-3xl font-medium mb-2 text-[#675749]">cyvn</h1>
+    <p class="text-[#675749] mb-8 font-light max-w-xs mx-auto">
+      Developer & IT Consultant.
+    </p>
+
+    <div class="space-y-3 mb-10"></div>
+
+    <div class="flex justify-center space-x-4">
+      <a href="https://discord.com/users/826141670872711209" target="_blank" class="social-icon w-10 h-10 rounded-full flex items-center justify-center text-[#675749]">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="https://t.me/cyleft" target="_blank" class="social-icon w-10 h-10 rounded-full flex items-center justify-center text-[#675749]">
+        <i class="fab fa-telegram"></i>
+      </a>
+      <a href="mailto:cyvnleft@gmail.com" class="social-icon w-10 h-10 rounded-full flex items-center justify-center text-[#675749]">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+
+    <div class="mt-12 text-xs text-[#675749] font-light tracking-widest">
+      بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+    </div>
+  </div>
+
+  <audio autoplay loop playsinline hidden id="bg-audio">
+    <source src="https://r2.guns.lol/0d6c3c34-e8e2-4dbb-abd3-1c8050daf50e.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('bg-audio');
+      audio.play().catch(err => {
+        console.warn('Autoplay was blocked by the browser:', err);
+      });
+    });
+  </script>
 </body>
 </html>
