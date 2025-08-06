@@ -1,96 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>cyvn</title>
-
-  <link rel="icon" type="image/png" href="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/grok.png">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f9f7f5;
-      color: #675749;
-    }
-    .name {
-      font-family: 'Playfair Display', serif;
-    }
-    .profile-img {
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    }
-    .social-icon {
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-      background-color: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-    .social-icon:hover {
-      transform: translateY(-3px);
-      background-color: rgba(255, 255, 255, 0.4);
-    }
-    .islamic-pattern {
-      opacity: 0.03;
-      pointer-events: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyvn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --accent: #888888;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary);
+            color: var(--secondary);
+            overflow-x: hidden;
+        }
+        
+        .text-stroke {
+            -webkit-text-stroke: 1px var(--secondary);
+            color: var(--secondary);
+            text-shadow: none;
+            paint-order: stroke fill;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        
+        .profile-img {
+            clip-path: circle(50% at 50% 50%);
+        }
+        
+        .social-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .social-link:hover::before {
+            left: 100%;
+        }
+        
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+            opacity: 0.2;
+        }
+        
+        .islamic-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd' opacity='0.05'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
-  <div class="max-w-md w-full text-center relative">
-    <div class="islamic-pattern absolute inset-0 overflow-hidden -z-10">
-      <svg viewBox="0 0 500 500" class="w-full h-full">
-        <path fill="none" stroke="#3a3a3a" stroke-width="1" 
-              d="M100,250a150,150 0 1,0 300,0a150,150 0 1,0 -300,0
-                 M250,100a150,150 0 0,0 0,300a150,150 0 0,0 0,-300
-                 M175,175l150,150M175,325l150,-150" />
-      </svg>
+<body class="min-h-screen">
+    <div class="islamic-pattern"></div>
+    
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-12 md:py-24 relative z-10">
+        <!-- Header -->
+        <header class="mb-16 md:mb-24">
+            <h1 class="text-5xl md:text-7xl font-bold mb-2 text-center reveal-text tracking-wider">
+                <span class="text-stroke">CYVN</span>
+            </h1>
+            <p class="text-center text-gray-300 reveal-text">Developer/Designer</p>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24">
+            <!-- Profile Image -->
+            <div class="w-48 h-48 md:w-64 md:h-64 relative reveal-text floating">
+                <div class="profile-img w-full h-full bg-gray-800 bg-opacity-50 border border-gray-700 rounded-full flex items-center justify-center overflow-hidden">
+                    <img src="https://i.postimg.cc/PJpDgcqd/pfp.png" alt="Profile" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -inset-4 border border-gray-600 rounded-full opacity-100"></div>
+            </div>
+            
+            <!-- Bio Section -->
+            <div class="max-w-md">
+                <div class="mb-8 reveal-text">
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-4">Ease Follows Hardship</h2>
+                    <p class="text-gray-300 leading-relaxed">
+                        Remember Me, I will remember you — 2:152
+                    </p>
+                </div>
+                
+                <div class="section-divider my-8 reveal-text"></div>
+                
+                <!-- Social Links -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 reveal-text">
+                    <a href="https://discord.com/users/826141670872711209" target="_blank" class="social-link backdrop-blur-[1px] bg-gradient-to-r from-transparent via-gray-700/20 to-transparent border border-white/20 rounded-lg p-4 flex items-center gap-3 transition-all hover:bg-gray-700/10 hover:border-white/40">
+                        <i class="fab fa-discord text-xl"></i>
+                        <span>Discord</span>
+                    </a>
+                    <a href="https://t.me/cyleft" target="_blank" class="social-link backdrop-blur-[1px] bg-gradient-to-r from-transparent via-gray-700/20 to-transparent border border-white/20 rounded-lg p-4 flex items-center gap-3 transition-all hover:bg-gray-700/10 hover:border-white/40">
+                        <i class="fab fa-telegram text-xl"></i>
+                        <span>Telegram</span>
+                    </a>
+                    <a href="https://github.com/cyvn" target="_blank" class="social-link backdrop-blur-[1px] bg-gradient-to-r from-transparent via-gray-700/20 to-transparent border border-white/20 rounded-lg p-4 flex items-center gap-3 transition-all hover:bg-gray-700/10 hover:border-white/40">
+                        <i class="fab fa-github text-xl"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="mailto:cyvnleft@gmail.com" class="social-link backdrop-blur-[1px] bg-gradient-to-r from-transparent via-gray-700/20 to-transparent border border-white/20 rounded-lg p-4 flex items-center gap-3 transition-all hover:bg-gray-700/10 hover:border-white/40">
+                        <i class="fas fa-envelope text-xl"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://steamcommunity.com/id/cyilm/" target="_blank" class="social-link backdrop-blur-[1px] bg-gradient-to-r from-transparent via-gray-700/20 to-transparent border border-white/20 rounded-lg p-4 flex items-center gap-3 transition-all hover:bg-gray-700/10 hover:border-white/40">
+                        <i class="fab fa-steam text-xl"></i>
+                        <span>Steam</span>
+                    </a>
+                    <a href="https://www.gofundme.com/f/jy3tdq-help-needed?attribution_id=sl:f7eae8fa-2800-473d-80f5-a1c615ff615b&utm_campaign=man_ss_icons&utm_medium=customer&utm_source=copy_link" target="_blank" class="social-link backdrop-blur-[1px] bg-gradient-to-r from-transparent via-gray-700/20 to-transparent border border-white/20 rounded-lg p-4 flex items-center gap-3 transition-all hover:bg-gray-700/10 hover:border-white/40">
+                        <i class="fas fa-donate text-xl"></i>
+                        <span>Donate</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="mt-24 text-center text-gray-500 text-sm reveal-text">
+            <p>© 2023 Cyvn. All creations are from the Creator.</p>
+            <p class="mt-2">"Whatever good you have is from Allah" (Quran 16:53)</p>
+        </footer>
     </div>
-
-    <div class="mb-8 flex justify-center">
-      <div class="profile-img w-32 h-32 rounded-full bg-cover bg-center overflow-hidden" 
-           style="background-image: url('https://i.pinimg.com/736x/bf/c0/a4/bfc0a41a23dfc49bee832b9d5c5af4b3.jpg')"></div>
-    </div>
-
-    <h1 class="name text-3xl font-medium mb-2 text-[#675749]">cyvn</h1>
-    <p class="text-[#675749] mb-8 font-light max-w-xs mx-auto">
-      Developer & IT Consultant.
-    </p>
-
-    <div class="space-y-3 mb-10"></div>
-
-    <div class="flex justify-center space-x-4">
-      <a href="https://discord.com/users/826141670872711209" target="_blank" class="social-icon w-10 h-10 rounded-full flex items-center justify-center text-[#675749]">
-        <i class="fab fa-discord"></i>
-      </a>
-      <a href="https://t.me/cyleft" target="_blank" class="social-icon w-10 h-10 rounded-full flex items-center justify-center text-[#675749]">
-        <i class="fab fa-telegram"></i>
-      </a>
-      <a href="mailto:cyvnleft@gmail.com" class="social-icon w-10 h-10 rounded-full flex items-center justify-center text-[#675749]">
-        <i class="fas fa-envelope"></i>
-      </a>
-    </div>
-
-    <div class="mt-12 text-xs text-[#675749] font-light tracking-widest">
-      بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-    </div>
-  </div>
-
-  <audio autoplay loop playsinline hidden id="bg-audio">
-    <source src="https://r2.guns.lol/0d6c3c34-e8e2-4dbb-abd3-1c8050daf50e.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const audio = document.getElementById('bg-audio');
-      audio.play().catch(err => {
-        console.warn('Autoplay was blocked by the browser:', err);
-      });
-    });
-  </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize GSAP animations
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Text reveal animation
+            gsap.utils.toArray('.reveal-text').forEach((el, i) => {
+                gsap.fromTo(el, 
+                    { opacity: 0, y: 20 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        delay: i * 0.1,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "top 80%",
+                            toggleActions: "play none none none"
+                        }
+                    }
+                );
+            });
+            
+            // Floating animation for profile image
+            const floatImg = document.querySelector('.floating');
+            floatImg.addEventListener('mouseenter', () => {
+                gsap.to(floatImg, { 
+                    y: -5, 
+                    duration: 0.5, 
+                    ease: "power2.inOut" 
+                });
+            });
+            
+            floatImg.addEventListener('mouseleave', () => {
+                gsap.to(floatImg, { 
+                    y: 0, 
+                    duration: 0.5, 
+                    ease: "power2.inOut" 
+                });
+            });
+            
+            // Social link hover effects
+            const socialLinks = document.querySelectorAll('.social-link');
+            socialLinks.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    gsap.to(link, {
+                        scale: 1.03,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+                
+                link.addEventListener('mouseleave', () => {
+                    gsap.to(link, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+            });
+            
+            // Background pattern animation
+            gsap.to('.islamic-pattern', {
+                x: 30,
+                y: 30,
+                duration: 20,
+                repeat: -1,
+                yoyo: true,
+                ease: "none"
+            });
+        });
+    </script>
 </body>
 </html>
