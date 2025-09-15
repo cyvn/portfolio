@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applications</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url('https://raw.githubusercontent.com/dorianpro/kaliwallpapers/master/kali-linux-wallpaper-v1.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'JetBrains Mono', monospace;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .taskbar {
+      background-color: rgba(0, 0, 0, 0.7);
+      height: 32px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      font-family: 'Fira Code', monospace;
+      font-size: 12px;
+    }
+
+    .taskbar-left, .taskbar-right {
+      display: flex;
+      gap: 20px;
+    }
+
+    .ip {
+      color: #2ecc71;
+    }
+
+    .terminal {
+      width: 100%;
+      max-width: 1100px;
+      height: 65vh;
+      margin: 0 auto;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(10, 14, 20, 0.35);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      transform-style: preserve-3d;
+      will-change: backdrop-filter;
+      border: 1px solid #464646;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+    }
+
+    .terminal-header {
+      background: rgba(0, 0, 0, 0.3);
+      height: 28px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-size: 12px;
+      border-bottom: 1px solid rgba(61, 126, 255, 0.3);
+    }
+
+    .terminal-body {
+      padding: 16px;
+      flex-grow: 1;
+      overflow-y: auto;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .prompt {
+      color: #919191;
+    }
+
+    .command {
+      color: #ffffff;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background-color: #919191;
+      animation: blink 1s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .neofetch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .ascii-art {
+      color: #919191;
+      white-space: pre;
+      font-size: 12px;
+    }
+
+    .social-link {
+      color: #919191;
+      text-decoration: none;
+      cursor: pointer;
+      display: block;
+      margin: 8px 0;
+
+    .handle {
+  color: #ffffff; /* pure white */
+
+    }
+
+    .social-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+    <div class="taskbar">
+        <div class="taskbar-left">
+            <span><a href="applications.html" style="color: inherit; text-decoration: none;">Applications</a></span>
+            <span><a href="index.html" style="color: inherit; text-decoration: none;">System</a></span>
+            <span>1</span>
+            <span></span>
+        </div>
+        <div class="taskbar-right">
+            <span>CPU: 12%</span>
+            <span>RAM: 3.2/15.6GB</span>
+            <span>Disk: 45%</span>
+            <span class="ip">192.168.208.1</span>
+            <span id="datetime"></span>
+            <script>
+                function updateDateTime() {
+                    const now = new Date();
+                    const options = { 
+                        weekday: 'short', 
+                        month: 'short', 
+                        day: 'numeric', 
+                        hour: '2-digit', 
+                        minute: '2-digit', 
+                        second: '2-digit', 
+                        timeZone: 'Europe/Vienna' 
+                    };
+                    document.getElementById('datetime').textContent = now.toLocaleString('en-US', options);
+                }
+                updateDateTime();
+                setInterval(updateDateTime, 1000);
+            </script>
+        </div>
+    </div>
+
+    <div class="terminal">
+        <div class="terminal-header">
+            cyvn@kali:~ — socials
+        </div>
+        <div class="terminal-body">
+            <div>
+                <span class="prompt">cyvn@kali:~$</span>
+                <span class="command">sudo socials</span>
+            </div>
+            
+            <div class="neofetch">
+                <div class="ascii-art">
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          ⠀⠀⠀⠀⣸⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀           ⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀          ⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀          ⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀          ⠀⠀⠀⠀⡘⢿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀          ⠀⠀⠀⣼⣿⣶⣽⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀          ⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀          ⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀          ⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⠿⠿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀
+⠀⠀          ⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⡟⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀
+⠀⠀          ⠀⠀⢠⣾⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀
+⠀⠀          ⠀⢠⣾⣿⣿⣿⣿⣿⣿⡷⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣷⣽⣛⠀⠀⠀⠀
+⠀⠀          ⢠⣿⣿⣿⣿⣿⣿⠿⠛⠛⠀⠀⠀⠀⠀⠀⠛⠛⠿⣿⣿⣿⣿⣿⣶⡄⠀⠀
+⠀           ⢰⣿⣿⠿⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠿⣿⣿⡆⠀
+           ⡰⠟⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⢆
+                </div>
+                <div>
+                    <a href="https://discord.com/users/826141670872711209" class="social-link">> Discord: <span class="handle">⠀/@6yvn</span></a>
+                    <a href="https://t.me/vxrcty" class="social-link">> Telegram: <span class="handle">/@vxrcty</span></a>
+                    <a href="mailto:cyvnleft@gmail.com" class="social-link">> Email: <span class="handle">⠀⠀⠀/cyvnleft</span></a>
+                    <a href="https://github.com/cyvn" class="social-link">> GitHub: <span class="handle">⠀⠀/@cyvn</span></a>
+                    <a href="https://steamcommunity.com/id/k2vil/" class="social-link">> Steam: <span class="handle">⠀⠀⠀/@k2vil</span></a>
+                    <a href="https://instagram.com/cyxdkr" class="social-link">> Twitter: <span class="handle">⠀/@cyxdkr</span></a>
+
+                    <div style="margin-top: 20px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
