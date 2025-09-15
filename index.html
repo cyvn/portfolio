@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>cyvn@kali:~</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/3RD64xKp/image.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -34,9 +35,9 @@
             gap: 20px;
         }
         .terminal {
-            width: 100%;
+            width: 95%;
             max-width: 1100px;
-            height: 65vh;
+            height: 75vh;
             margin: 0 auto;
             position: absolute;
             left: 50%;
@@ -47,9 +48,52 @@
             border: 1px solid #464646;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
-            overflow: hidden;
+            overflow: auto;
             display: flex;
             flex-direction: column;
+        }
+
+        @media (max-width: 768px) {
+            .terminal {
+                height: 80vh;
+                width: 95%;
+            }
+            .neofetch {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .ascii-art {
+                font-size: 8px;
+                text-align: center;
+                margin-bottom: 16px;
+            }
+            .info {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .key, .value {
+                display: inline;
+            }
+            .social-link {
+                font-size: 12px;
+                margin: 4px 0;
+            }
+            .taskbar {
+                height: 28px;
+                padding: 0 8px;
+                font-size: 10px;
+            }
+            .taskbar-left, .taskbar-right {
+                gap: 6px;
+                font-size: 9px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .terminal-body {
+                padding: 8px;
+                font-size: 12px;
+            }
         }
         .terminal-header {
             background: rgba(0, 0, 0, 0.3);
@@ -149,6 +193,7 @@
             gap: 20px;
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 100;
         }
         .app-icon {
             width: 32px;
