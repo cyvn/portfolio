@@ -3,226 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyvn</title>
+    <title>cyvn@kali:~</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
-        
-        :root {
-            --primary: #000000;
-            --secondary: #ffffff;
-            --accent: #888888;
-        }
-        
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--primary);
-            color: var(--secondary);
-            overflow-x: hidden;
-        }
-        
-        .text-stroke {
-            -webkit-text-stroke: 1px var(--secondary);
-            color: var(--secondary);
-            text-shadow: none;
-            paint-order: stroke fill;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-        
-        .profile-img {
-            clip-path: circle(50% at 50% 50%);
-        }
-        
-        .social-link {
-            position: relative;
+            background: url('https://raw.githubusercontent.com/dorianpro/kaliwallpapers/master/kali-linux-wallpaper-v1.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'JetBrains Mono', monospace;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
             overflow: hidden;
         }
-        
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        .taskbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            height: 32px;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: all 0.6s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
         }
-        
-        .social-link:hover::before {
-            left: 100%;
+        .taskbar-left, .taskbar-right {
+            display: flex;
+            gap: 20px;
         }
-        
-        .reveal-text {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
-            opacity: 0.2;
-        }
-        
-        .islamic-pattern {
-            position: absolute;
+        .terminal {
             width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd' opacity='0.05'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: -1;
+            max-width: 1100px;
+            height: 65vh;
+            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(10, 14, 20, 0.35);
+            backdrop-filter: blur(10px);
+            border: 1px solid #464646;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .terminal-header {
+            background: rgba(0, 0, 0, 0.3);
+            height: 28px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: 12px;
+            border-bottom: 1px solid rgba(61, 126, 255, 0.3);
         }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
+        .terminal-body {
+            padding: 16px;
+            flex-grow: 1;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .prompt {
+            color: #919191;
+        }
+        .command {
+            color: #ffffff;
+        }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: #919191;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .neofetch {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 8px;
+        }
+        .ascii-art {
+            color: #919191;
+            white-space: pre;
+            font-size: 12px;
+        }
+        .info {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 0 16px;
+        }
+        .key {
+            color: #919191;
+        }
+        .value {
+            color: #ffffff;
+        }
+        .ip {
+            color: #2ecc71;
+        }
+        .memory {
+            color: #ffffff;
+        }
+        .social-link {
+            color: #3d7eff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .social-link:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            margin-top: 16px;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: space-between;
+        }
+        .ip-badge {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-left: 8px;
+        }
+    </style>
+    <style>
+        .app-taskbar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            padding: 8px 16px;
+            display: flex;
+            gap: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .app-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .app-icon:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
     </style>
 </head>
-<body class="min-h-screen">
-    <div class="islamic-pattern"></div>
-    
-    <!-- Main Container -->
-    <div class="container mx-auto px-4 py-12 md:py-24 relative z-10">
-        <!-- Header -->
-        <header class="mb-16 md:mb-24">
-            <h1 class="text-5xl md:text-7xl font-bold mb-2 text-center reveal-text tracking-wider">
-                <span class="text-stroke">CYVN</span>
-            </h1>
-            <p class="text-center text-gray-300 reveal-text">Developer/Designer</p>
-        </header>
-        
-        <!-- Main Content -->
-        <main class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24">
-            <!-- Profile Image -->
-            <div class="w-48 h-48 md:w-64 md:h-64 relative reveal-text floating">
-                <div class="profile-img w-full h-full bg-gray-800 bg-opacity-50 border border-gray-700 rounded-full flex items-center justify-center overflow-hidden">
-                    <img src="https://i.postimg.cc/pXx9nzr4/image20-ezgif-com-effects.png" alt="Profile" class="w-full h-full object-cover">
-                </div>
-                <div class="absolute -inset-4 border border-gray-600 rounded-full opacity-100"></div>
+<body>
+    <div class="taskbar">
+        <div class="taskbar-left">
+            <span><a href="applications.html" style="color: inherit; text-decoration: none;">Applications</a></span>
+            <span>System</span>
+            <span>1</span>
+            <span></span>
+        </div>
+        <div class="taskbar-right">
+            <span>CPU: 12%</span>
+            <span>RAM: 3.2/15.6GB</span>
+            <span>Disk: 11%</span>
+            <span class="ip">192.168.208.1</span>
+            <span id="datetime"></span>
+            <script>
+                function updateDateTime() {
+                    const now = new Date();
+                    const options = { 
+                        weekday: 'short', 
+                        month: 'short', 
+                        day: 'numeric', 
+                        hour: '2-digit', 
+                        minute: '2-digit', 
+                        second: '2-digit', 
+                        timeZone: 'Europe/Vienna' 
+                    };
+                    document.getElementById('datetime').textContent = now.toLocaleString('en-US', options);
+                }
+                updateDateTime();
+                setInterval(updateDateTime, 1000);
+            </script>
+        </div>
+    </div>
+
+    <div class="terminal">
+        <div class="terminal-header">
+            cyvn@kali:~ — Terminal
+        </div>
+        <div class="terminal-body">
+            <div>
+                <span class="prompt">cyvn@kali:~$</span>
+                <span class="command">sudo neofetch</span>
             </div>
             
-            <!-- Bio Section -->
-            <div class="max-w-md">
-                <div class="mb-8 reveal-text">
-                    <h2 class="text-2xl md:text-3xl font-semibold mb-4">Ease Follows Hardship</h2>
-                    <p class="text-gray-300 leading-relaxed">
-                        Remember Me, I will remember you — 2:152
-                    </p>
+            <div class="neofetch">
+                <div class="ascii-art">
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          ⠀⠀⠀⠀⣸⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀           ⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀          ⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀          ⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀          ⠀⠀⠀⠀⡘⢿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀          ⠀⠀⠀⣼⣿⣶⣽⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀          ⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀          ⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀          ⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⠿⠿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀
+⠀⠀          ⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⡟⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀
+⠀⠀          ⠀⠀⢠⣾⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀
+⠀⠀          ⠀⢠⣾⣿⣿⣿⣿⣿⣿⡷⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣷⣽⣛⠀⠀⠀⠀
+⠀⠀          ⢠⣿⣿⣿⣿⣿⣿⠿⠛⠛⠀⠀⠀⠀⠀⠀⠛⠛⠿⣿⣿⣿⣿⣿⣶⡄⠀⠀
+⠀           ⢰⣿⣿⠿⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠿⣿⣿⡆⠀
+           ⡰⠟⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⢆
                 </div>
-                
-                <div class="section-divider my-8 reveal-text"></div>
-                
-                <!-- Social Links -->
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 reveal-text">
-                    <a href="https://discord.com/users/826141670872711209" target="_blank" class="social-link backdrop-blur-[1px] bg-gradient-to-r from-transparent via-gray-700/20 to-transparent border border-white/20 rounded-lg p-4 flex items-center gap-3 transition-all hover:bg-gray-700/10 hover:border-white/40">
-                        <i class="fab fa-discord text-xl"></i>
-                        <span>Discord</span>
-                    </a>
-                    <a href="https://t.me/vxrcty" target="_blank" class="social-link backdrop-blur-[1px] bg-gradient-to-r from-transparent via-gray-700/20 to-transparent border border-white/20 rounded-lg p-4 flex items-center gap-3 transition-all hover:bg-gray-700/10 hover:border-white/40">
-                        <i class="fab fa-telegram text-xl"></i>
-                        <span>Telegram</span>
-                    </a>
-                    <a href="https://github.com/cyvn" target="_blank" class="social-link backdrop-blur-[1px] bg-gradient-to-r from-transparent via-gray-700/20 to-transparent border border-white/20 rounded-lg p-4 flex items-center gap-3 transition-all hover:bg-gray-700/10 hover:border-white/40">
-                        <i class="fab fa-github text-xl"></i>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="mailto:cyvnleft@gmail.com" class="social-link backdrop-blur-[1px] bg-gradient-to-r from-transparent via-gray-700/20 to-transparent border border-white/20 rounded-lg p-4 flex items-center gap-3 transition-all hover:bg-gray-700/10 hover:border-white/40">
-                        <i class="fas fa-envelope text-xl"></i>
-                        <span>Email</span>
-                    </a>
-                    <a href="https://steamcommunity.com/id/Klyxo/" target="_blank" class="social-link backdrop-blur-[1px] bg-gradient-to-r from-transparent via-gray-700/20 to-transparent border border-white/20 rounded-lg p-4 flex items-center gap-3 transition-all hover:bg-gray-700/10 hover:border-white/40">
-                        <i class="fab fa-steam text-xl"></i>
-                        <span>Steam</span>
-                    </a>
-                    <a href="https://www.gofundme.com/f/jy3tdq-help-needed?attribution_id=sl:f7eae8fa-2800-473d-80f5-a1c615ff615b&utm_campaign=man_ss_icons&utm_medium=customer&utm_source=copy_link" target="_blank" class="social-link backdrop-blur-[1px] bg-gradient-to-r from-transparent via-gray-700/20 to-transparent border border-white/20 rounded-lg p-4 flex items-center gap-3 transition-all hover:bg-gray-700/10 hover:border-white/40">
-                        <i class="fas fa-donate text-xl"></i>
-                        <span>Donate</span>
-                    </a>
+                <div class="info">
+                    <span class="key">Username:</span> <span class="value">cyvn</span>
+                    <span class="key">OS:</span> <span class="value">Kali GNU/Linux Rolling aarch64</span>
+                    <span class="key">Kernel:</span> <span class="value">Full-Stack Developer</span>
+                    <span class="key">Uptime:</span> <span class="value">5+ years in web development</span>
+                    <span class="key">Packages:</span> <span class="value">15+ core skills</span>
+                    <span class="key">Shell:</span> <span class="value">VS Code, Neovim</span>
+                    <span class="key">Resolution:</span> <span class="value">2560x1440, 240FPS</span>
+                    <span class="key">WM:</span> <span class="value">Xfwm4</span>
+                    <span class="key">Theme:</span> <span class="value">Kali-Dark</span>
+                    <span class="key">Icons:</span> <span class="value">Flat-Remix-Blue-Dark</span>
+                    <span class="key">Terminal:</span> <span class="value">qterminal</span>
+                    <span class="key">CPU:</span> <span class="value">AMD Ryzen 9 5900X</span>
+                    <span class="key">GPU:</span> <span class="value">NVIDIA RTX 3080</span>
+                    <span class="key">Memory:</span> <span class="memory">3.2/15.6GB</span>
+                    
+                    <div class="footer">
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
-            </div>
-        </main>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize GSAP animations
-            gsap.registerPlugin(ScrollTrigger);
-            
-            // Text reveal animation
-            gsap.utils.toArray('.reveal-text').forEach((el, i) => {
-                gsap.fromTo(el, 
-                    { opacity: 0, y: 20 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.8,
-                        delay: i * 0.1,
-                        ease: "power2.out",
-                        scrollTrigger: {
-                            trigger: el,
-                            start: "top 80%",
-                            toggleActions: "play none none none"
-                        }
-                    }
-                );
-            });
-            
-            // Floating animation for profile image
-            const floatImg = document.querySelector('.floating');
-            floatImg.addEventListener('mouseenter', () => {
-                gsap.to(floatImg, { 
-                    y: -5, 
-                    duration: 0.5, 
-                    ease: "power2.inOut" 
-                });
-            });
-            
-            floatImg.addEventListener('mouseleave', () => {
-                gsap.to(floatImg, { 
-                    y: 0, 
-                    duration: 0.5, 
-                    ease: "power2.inOut" 
-                });
-            });
-            
-            // Social link hover effects
-            const socialLinks = document.querySelectorAll('.social-link');
-            socialLinks.forEach(link => {
-                link.addEventListener('mouseenter', () => {
-                    gsap.to(link, {
-                        scale: 1.03,
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
-                });
-                
-                link.addEventListener('mouseleave', () => {
-                    gsap.to(link, {
-                        scale: 1,
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
-                });
-            });
-            
-            // Background pattern animation
-            gsap.to('.islamic-pattern', {
-                x: 30,
-                y: 30,
-                duration: 20,
-                repeat: -1,
-                yoyo: true,
-                ease: "none"
-            });
-        });
-    </script>
 </body>
 </html>
