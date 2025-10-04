@@ -20,116 +20,219 @@
     .linkish:hover{opacity:.9;transform:translateY(-1px)}
     .icon{width:22px;height:22px;stroke-width:1.5}
     footer{position:fixed;bottom:20px;left:0;right:0;text-align:center}
+
+    /* sound chip */
+    .sound-chip{
+      position:fixed;left:50%;bottom:28px;transform:translateX(-50%);
+      background:#111a1d;border:1px solid #37474b;color:#b4d2d7;
+      padding:8px 12px;border-radius:999px;display:flex;gap:8px;
+      align-items:center;font-family:"IBM Plex Mono", monospace;
+      font-size:12px;opacity:.95;backdrop-filter:blur(8px);cursor:pointer;
+      box-shadow:0 6px 24px rgba(0,0,0,.35); z-index:50;
+    }
+    .hidden{display:none !important;}
   </style>
 </head>
 <body class="min-h-screen flex flex-col relative overflow-hidden">
 <main class="flex-1 grid place-items-center pt-8 z-10">
 <section class="text-center space-y-6 hovered-element">
-      <!-- profile picture -->
-      <div class="mx-auto w-10 h-10 rounded-full overflow-hidden mb-4" aria-hidden="true">
-        <img src="https://i.postimg.cc/pLDHV0Sn/Chat-GPT-Image-Oct-4-2025-09-00-00-PM.png" alt="Profile" class="w-full h-full object-cover" />
-      </div>
+  <!-- profile picture -->
+  <div class="mx-auto w-10 h-10 rounded-full overflow-hidden mb-4" aria-hidden="true">
+    <img src="https://i.postimg.cc/pLDHV0Sn/Chat-GPT-Image-Oct-4-2025-09-00-00-PM.png" alt="Profile" class="w-full h-full object-cover" />
+  </div>
 
-      <!-- name + role -->
-      <h1 class="mono text-[clamp(22px,4.2vw,28px)] font-medium tracking-tight">
-        <span class="opacity-95">cy</span>
-        <span class="opacity-60"> | developer</span>
-      </h1>
+  <!-- name + role -->
+  <h1 class="mono text-[clamp(22px,4.2vw,28px)] font-medium tracking-tight">
+    <span class="opacity-95">cy</span>
+    <span class="opacity-60"> | developer</span>
+  </h1>
 
-      <!-- icons row -->
-      <nav class="flex items-center justify-center gap-8 pt-2 text-[var(--ink)] opacity-80">
-        <a class="linkish" href="mailto:cyvnleft@gmail.com" aria-label="Email">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 7l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2" ry="2"/></svg>
-        </a>
-        <a class="linkish" href="https://discord.com/users/826141670872711209" target="_blank" aria-label="Discord">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14.82 4.26a10.14 10.14 0 0 0-.53 1.1 14.66 14.66 0 0 0-4.58 0 10.14 10.14 0 0 0-.53-1.1 16 16 0 0 0-4.13 1.3 17.33 17.33 0 0 0-3 11.59 16.6 16.6 0 0 0 5.07 2.59A12.89 12.89 0 0 0 8.23 18a9.65 9.65 0 0 1-1.71-.83 3.39 3.39 0 0 0 .42-.33 11.66 11.66 0 0 0 10.12 0c.14.11.28.22.42.33a10.84 10.84 0 0 1-1.71.84 12.41 12.41 0 0 0 1.08 1.78 16.44 16.44 0 0 0 5.06-2.59 17.22 17.22 0 0 0-3-11.59 16.09 16.09 0 0 0-4.09-1.35zM8.68 14.81a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.93 1.93 0 0 1 1.8 2 1.93 1.93 0 0 1-1.8 2zm6.64 0a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.92 1.92 0 0 1 1.8 2 1.92 1.92 0 0 1-1.8 2z"/></svg>
-        </a>
-        <a class="linkish" href="https://github.com/cyvn" target="_blank" aria-label="GitHub">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 .5a12 12 0 00-3.79 23.4c.6.1.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.74.08-.73.08-.73 1.22.09 1.87 1.26 1.87 1.26 1.08 1.85 2.84 1.32 3.53 1.01.11-.78.42-1.32.77-1.62-2.66-.3-5.46-1.33-5.46-5.9 0-1.3.47-2.37 1.25-3.21-.13-.31-.54-1.55.12-3.22 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.67.25 2.91.12 3.22.78.84 1.25 1.92 1.25 3.2 0 4.58-2.8 5.6-5.47 5.9.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.82.57A12 12 0 0012 .5z"/>
-          </svg>
-        </a>
-        <a class="linkish" href="https://t.me/vxrcty" target="_blank" aria-label="Telegram">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-        </a>
-      </nav>
-    </section>
-  </main>
-  <!-- fixed footer -->
-  <div id="particles-js" class="absolute inset-0 z-0 opacity-50"></div>
+  <!-- icons row -->
+  <nav class="flex items-center justify-center gap-8 pt-2 text-[var(--ink)] opacity-80">
+    <a class="linkish" href="mailto:cyvnleft@gmail.com" aria-label="Email">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 7l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2" ry="2"/></svg>
+    </a>
+    <a class="linkish" href="https://discord.com/users/826141670872711209" target="_blank" aria-label="Discord">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14.82 4.26a10.14 10.14 0 0 0-.53 1.1 14.66 14.66 0 0 0-4.58 0 10.14 10.14 0 0 0-.53-1.1 16 16 0 0 0-4.13 1.3 17.33 17.33 0 0 0-3 11.59 16.6 16.6 0 0 0 5.07 2.59A12.89 12.89 0 0 0 8.23 18a9.65 9.65 0 0 1-1.71-.83 3.39 3.39 0 0 0 .42-.33 11.66 11.66 0 0 0 10.12 0c.14.11.28.22.42.33a10.84 10.84 0 0 1-1.71.84 12.41 12.41 0 0 0 1.08 1.78 16.44 16.44 0 0 0 5.06-2.59 17.22 17.22 0 0 0-3-11.59 16.09 16.09 0 0 0-4.09-1.35zM8.68 14.81a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.93 1.93 0 0 1 1.8 2 1.93 1.93 0 0 1-1.8 2zm6.64 0a1.94 1.94 0 0 1-1.8-2 1.93 1.93 0 0 1 1.8-2 1.92 1.92 0 0 1 1.8 2 1.92 1.92 0 0 1-1.8 2z"/></svg>
+    </a>
+    <a class="linkish" href="https://github.com/cyvn" target="_blank" aria-label="GitHub">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 .5a12 12 0 00-3.79 23.4c.6.1.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.74.08-.73.08-.73 1.22.09 1.87 1.26 1.87 1.26 1.08 1.85 2.84 1.32 3.53 1.01.11-.78.42-1.32.77-1.62-2.66-.3-5.46-1.33-5.46-5.9 0-1.3.47-2.37 1.25-3.21-.13-.31-.54-1.55.12-3.22 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.67.25 2.91.12 3.22.78.84 1.25 1.92 1.25 3.2 0 4.58-2.8 5.6-5.47 5.9.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.82.57A12 12 0 0012 .5z"/>
+      </svg>
+    </a>
+    <a class="linkish" href="https://t.me/vxrcty" target="_blank" aria-label="Telegram">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </a>
+  </nav>
+</section>
+</main>
 
-  <!-- hidden audio -->
-  <audio id="bg-audio" loop style="display:none">
-    <source src="https://r2.guns.lol/d291cf95-ee58-48bf-bb8f-7350f8adff56.mp3" type="audio/mpeg">
-  </audio>
+<!-- bg particles -->
+<div id="particles-js" class="absolute inset-0 z-0 opacity-50"></div>
 
-  <footer class="relative z-10">
-    <p class="mono text-sm flex items-center gap-2 justify-center opacity-90">
-      <span class="inline-flex items-center gap-2">
-        <span class="text-blue-300/80" aria-hidden="true">📬</span>
-        <span></span>
-      </span>
-      <a class="underline underline-offset-4 decoration-1 linkish" href="https://t.me/vxrcty" target="_blank">Let's chat!</a>
-    </p>
-    <p class="mono text-xs text-[var(--ink-dim)] mt-3" id="linz-time">My Time now, <span>—:—</span> local time</p>
-  </footer>
+<!-- AUDIO: keep simple, no WebAudio/CORS -->
+<audio id="bg-audio" preload="auto" autoplay muted playsinline loop></audio>
 
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      particlesJS('particles-js', {
-        "particles": {
-          "number": { "value": 30, "density": { "enable": true, "value_area": 800 }},
-          "color": { "value": "#b4d2d7" },
-          "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }},
-          "opacity": { "value": 0.5 },
-          "size": { "value": 3, "random": true },
-          "line_linked": { "enable": true, "distance": 150, "color": "#94aeb3", "opacity": 0.4, "width": 1 },
-          "move": { "enable": true, "speed": 1.5, "random": true, "out_mode": "bounce", "bounce": true,
-            "attract": { "enable": true, "rotateX": 600, "rotateY": 1200 }}
+<!-- sound enable chip -->
+<button id="sound-chip" class="sound-chip hidden" type="button" aria-label="Enable sound">
+  <span>🔊 enable sound</span>
+</button>
+
+<footer class="relative z-10">
+  <p class="mono text-sm flex items-center gap-2 justify-center opacity-90">
+    <span class="inline-flex items-center gap-2">
+      <span class="text-blue-300/80" aria-hidden="true">📬</span>
+      <span></span>
+    </span>
+    <a class="underline underline-offset-4 decoration-1 linkish" href="https://t.me/vxrcty" target="_blank">Let's chat!</a>
+  </p>
+  <p class="mono text-xs text-[var(--ink-dim)] mt-3" id="linz-time">My Time now, <span>—:—</span> local time</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    particlesJS('particles-js', {
+      "particles": {
+        "number": { "value": 30, "density": { "enable": true, "value_area": 800 }},
+        "color": { "value": "#b4d2d7" },
+        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }},
+        "opacity": { "value": 0.5 },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": true, "distance": 150, "color": "#94aeb3", "opacity": 0.4, "width": 1 },
+        "move": { "enable": true, "speed": 1.5, "random": true, "out_mode": "bounce", "bounce": true,
+          "attract": { "enable": true, "rotateX": 600, "rotateY": 1200 }}
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "bubble" },
+          "onclick": { "enable": true, "mode": "push" },
+          "resize": true
         },
-        "interactivity": {
-          "detect_on": "canvas",
-          "events": {
-            "onhover": { "enable": true, "mode": "bubble" },
-            "onclick": { "enable": true, "mode": "push" },
-            "resize": true
-          },
-          "modes": {
-            "bubble": { "distance": 250, "size": 10, "duration": 2, "opacity": 0.8 },
-            "grab": { "distance": 200, "line_linked": { "opacity": 1 }},
-            "push": { "particles_nb": 4 }
-          }
-        },
-        "retina_detect": true
-      });
+        "modes": {
+          "bubble": { "distance": 250, "size": 10, "duration": 2, "opacity": 0.8 },
+          "grab": { "distance": 200, "line_linked": { "opacity": 1 }},
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
     });
-  </script>
+  });
+</script>
 
-  <script>
-    // Show Linz local time (Austria) and keep it ticking
-    function updateLinzTime(){
-      try {
-        const fmt = new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',hour12:true,timeZone:'Europe/Vienna'});
-        const now = fmt.format(new Date());
-        const el = document.querySelector('#linz-time span');
-        if(el) el.textContent = now;
-      } catch (e) {}
+<script>
+  // Show Linz local time (Austria) and keep it ticking
+  function updateLinzTime(){
+    try {
+      const fmt = new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',hour12:true,timeZone:'Europe/Vienna'});
+      const now = fmt.format(new Date());
+      const el = document.querySelector('#linz-time span');
+      if(el) el.textContent = now;
+    } catch (e) {}
+  }
+  updateLinzTime();
+  setInterval(updateLinzTime, 30000);
+</script>
+
+<script>
+  // ✅ Minimal, reliable audio boot + diagnostics
+  (function() {
+    const PRIMARY = "https://r2.guns.lol/d291cf95-ee58-48bf-bb8f-7350f8adff56.mp3";
+    // Fallback public sample (tiny file). If this one plays, your host/URL is the issue.
+    const FALLBACK = "https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav"; // widely mirrored sample
+
+    const audio = document.getElementById('bg-audio');
+    const chip  = document.getElementById('sound-chip');
+
+    function setSrc(url) {
+      const bust = Date.now();
+      audio.src = url + (url.includes("?") ? "&" : "?") + "v=" + bust;
     }
-    updateLinzTime();
-    setInterval(updateLinzTime, 30000);
-  </script>
 
-  <script>
-    // 🔊 Restart & autoplay audio each visit/refresh
-    document.addEventListener("DOMContentLoaded", () => {
-      const audio = document.getElementById("bg-audio");
+    function tryPlay(tag = "") {
+      audio.volume = 1;
+      audio.muted = true;    // start muted so autoplay is allowed
       audio.currentTime = 0;
-      audio.play().catch(() => {
-        // If browser blocks autoplay, wait for first user click
-        document.addEventListener("click", () => audio.play(), { once: true });
+      audio.load();
+      const p = audio.play();
+      if (!p || typeof p.then !== "function") {
+        console.warn("play() returned non-promise", tag);
+        return;
+      }
+      p.then(() => {
+        console.log("Muted autoplay started", tag);
+        chip.classList.remove('hidden'); // show chip so user can unmute anytime
+      }).catch(err => {
+        console.error("Autoplay blocked or load error", tag, err);
+        chip.classList.remove('hidden');
       });
+    }
+
+    function unmuteAndPlay() {
+      audio.muted = false;
+      audio.volume = 1;
+      // ensure we’re definitely playing
+      audio.play().then(() => {
+        console.log("Unmuted + playing");
+        chip.classList.add('hidden');
+        sessionStorage.setItem('sound-enabled','1');
+      }).catch(err => {
+        console.error("User gesture play failed", err);
+        chip.classList.remove('hidden');
+      });
+    }
+
+    // Source selection with fallback after a short timeout if no progress
+    let switched = false;
+    setSrc(PRIMARY);
+    tryPlay("(primary)");
+
+    // If nothing loads within 2.5s, switch to fallback once
+    const failover = setTimeout(() => {
+      if (audio.readyState < 2 && !switched) {
+        console.warn("Primary audio seems stuck. Switching to fallback.");
+        switched = true;
+        setSrc(FALLBACK);
+        tryPlay("(fallback)");
+      }
+    }, 2500);
+
+    // If it eventually loads, clear the failover
+    audio.addEventListener('canplaythrough', () => {
+      clearTimeout(failover);
+      console.log("canplaythrough:", audio.src);
     });
-  </script>
+
+    // On any user interaction, unmute + play
+    const unlock = () => unmuteAndPlay();
+    ['click','pointerdown','keydown','touchstart'].forEach(ev => {
+      window.addEventListener(ev, unlock, { once: true, passive: true });
+    });
+    chip.addEventListener('click', unmuteAndPlay);
+
+    // If user already enabled this tab earlier in the session, auto-unmute ASAP
+    if (sessionStorage.getItem('sound-enabled') === '1') {
+      // give a tick to ensure load kicked in
+      setTimeout(unmuteAndPlay, 50);
+    }
+
+    // When user returns to the tab, make sure it stays playing
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && !audio.paused) {
+        audio.play().catch(()=>{ /* ignore */ });
+      }
+    });
+
+    // Log actual errors (network/decoder)
+    audio.addEventListener('error', () => {
+      const e = audio.error;
+      console.error("Audio element error:", e && e.code, e);
+      chip.classList.remove('hidden');
+    });
+    audio.addEventListener('stalled', () => console.warn("Audio stalled"));
+    audio.addEventListener('abort', () => console.warn("Audio load aborted"));
+  })();
+</script>
 </body>
 </html>
